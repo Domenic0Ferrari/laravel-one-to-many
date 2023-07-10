@@ -29,7 +29,7 @@
             <th scope="row">{{ $project->id }}</th>
             <td>{{ $project->title }}</td>
             <td>
-                <a href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->category->name }}</a>
+                <a href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->type->name }}</a>
             </td>
             <td>{{ $project->author}}</td>
             <td><a href="{{ $project->url_github}}">{{ $project->url_github}}</a></td>

@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('posts', PostController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('projects', ProjectController::class);
+    Route::resource('types', TypeController::class);
 });
 
 Route::middleware('auth')
