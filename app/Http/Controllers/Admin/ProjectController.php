@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Type;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,10 +11,10 @@ class ProjectController extends Controller
 {
     private $validations = [
         'title' => 'required|string|min:5|max:100',
+        'type_id' => 'required|integer|exists:types,id',
         'author' => 'required|string|min:5|max:30',
         'url_github' => 'required|url|max:200',
         'description' => 'required|string',
-        'languages' => 'required|string|min:5|max:50',
     ];
 
     private $validation_messages = [
@@ -22,6 +23,8 @@ class ProjectController extends Controller
         'title.required' => 'Il campo titolo è obbligatorio',
         'title.min' => 'Il campo titolo deve avere almeno :min caratteri',
         'title.max' => 'Il campo titolo deve avere massimo :max caratteri',
+        // exist
+        'type_id.exists' => 'Valore non valido',
         // author
         'author.required' => 'Il campo autore è obbligatorio',
         'author.min' => 'Il campo Autore deve avere almeno :min caratteri',
@@ -32,10 +35,6 @@ class ProjectController extends Controller
         'url_github.max' => 'Il campo Github deve avere massimo :max caratteri',
         // description
         'description.required' => 'Il campo Descrizione è obbligatorio',
-        // languages
-        'languages.required' => 'Il campo Linguaggio è obbligatorio',
-        'languages.min' => 'Il campo Linguaggio deve avere almeno :min caratteri',
-        'languages.max' => 'Il campo Linguaggio deve avere massimo :max caratteri',
     ];
 
     /**
@@ -56,7 +55,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -73,10 +73,10 @@ class ProjectController extends Controller
 
         $newProject = new Project();
         $newProject->title = $data['title'];
+        $newProject->type_id = $data['type_id'];
         $newProject->author = $data['author'];
         $newProject->url_github = $data['url_github'];
         $newProject->description = $data['description'];
-        $newProject->languages = $data['languages'];
 
         $newProject->save();
 
@@ -102,7 +102,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -119,10 +121,10 @@ class ProjectController extends Controller
         $data = $request->all();
         // aggiornare i dati nel database se validi
         $project->title = $data['title'];
+        $project->type_id = $data['type_id'];
         $project->author = $data['author'];
         $project->url_github = $data['url_github'];
         $project->description = $data['description'];
-        $project->languages = $data['languages'];
         // aggiornare i dati
         $project->update();
         // reindirizza alla pagina show

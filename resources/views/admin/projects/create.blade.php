@@ -75,19 +75,6 @@
         </div>
     </div>
 
-    <div class="mb-3">
-        <label for="languages" class="form-label">Linguaggio</label>
-        <input type="text" 
-        class="form-control @error('languages') is-invalid @enderror" id="languages" 
-        name="languages" 
-        value="{{old('languages')}}">
-        <div class="invalid-feedback">
-            @error('languages')
-            {{ $message }}
-            @enderror
-        </div>
-    </div>
-
     <button class="btn btn-primary">Save</button>
 </form>
 

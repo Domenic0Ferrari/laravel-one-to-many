@@ -17,6 +17,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
+            <th scope="col">Type</th>
             <th scope="col">Author</th>
             <th scope="col">Link</th>
             <th scope="col">Actions</th>
@@ -27,6 +28,9 @@
         <tr>
             <th scope="row">{{ $project->id }}</th>
             <td>{{ $project->title }}</td>
+            <td>
+                <a href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->category->name }}</a>
+            </td>
             <td>{{ $project->author}}</td>
             <td><a href="{{ $project->url_github}}">{{ $project->url_github}}</a></td>
             <td>
