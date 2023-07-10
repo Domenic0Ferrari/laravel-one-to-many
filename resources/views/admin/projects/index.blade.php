@@ -5,10 +5,10 @@
 
 @if (session('delete_success'))
 @php
-    $post = session('delete_success')
+    $project = session('delete_success')
 @endphp
     <div class="alert alert-danger">
-        Il progetto "{{ $project->title }}" è stato eliminato per sempre
+        Il progetto "{{ $project->title }}" è stato eliminato per sempre!
     </div>
 @endif
 
@@ -32,7 +32,7 @@
             <td>
                 <a href="{{ route('admin.projects.show', ['project' => $project]) }}" class="btn btn-primary">View</a>
                 <a href="{{ route('admin.projects.edit', ['project' => $project]) }}" class="btn btn-warning">Edit</a>
-                <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->id }}">
+                <button type="button" class="btn btn-danger js-delete-2" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->id }}">
                     Delete
                 </button>
             </td>
@@ -64,7 +64,7 @@ aria-hidden="true">
                 action="{{ route('admin.projects.destroy', ['project' => $project]) }}"
                 method="POST"
                 class="d-inline-block" 
-                id="confirm-delete">
+                id="confirm-delete-2">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger">Delete</button>

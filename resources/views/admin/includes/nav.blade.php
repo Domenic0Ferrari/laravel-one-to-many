@@ -41,7 +41,7 @@
                         </a>                   
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('admin.projects.index') }}">Index</a></li>
-                            {{-- <li><a class="dropdown-item" href="{{ route('admin.posts.create') }}">Add</a></li> --}}
+                            <li><a class="dropdown-item" href="{{ route('admin.projects.create') }}">Add</a></li>
                         </ul>
                     </li>
                 </li>

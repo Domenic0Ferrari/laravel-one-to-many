@@ -16,4 +16,7 @@
     Mollitia officia voluptatibus, corrupti itaque ipsam architecto quae quo hic commodi ipsum, laborum sunt beatae expedita, alias recusandae porro blanditiis ex assumenda! Quo vitae obcaecati tempore rem voluptas officia debitis.
     Accusamus, nisi minus inventore beatae commodi debitis nihil corrupti obcaecati. Aliquam, excepturi eaque molestias officiis delectus laborum ut cupiditate autem dicta quae illum non illo recusandae ea explicabo? Deleniti, minus?
     Illo voluptatum numquam atque quisquam, explicabo ad odit accusamus. Id porro tempore, iure cumque tempora incidunt quo dolore amet debitis explicabo dolores possimus autem minus optio quia vitae non sed!</p>
+    <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">
+    Torna alla index
+    </a>
 @endsection
