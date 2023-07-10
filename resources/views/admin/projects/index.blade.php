@@ -8,7 +8,7 @@
     $post = session('delete_success')
 @endphp
     <div class="alert alert-danger">
-        Il post "{{ $post->title }}" è stato eliminato per sempre
+        Il progetto "{{ $project->title }}" è stato eliminato per sempre
     </div>
 @endif
 
